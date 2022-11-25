@@ -1,10 +1,4 @@
-// import {
-//   dbService,
-//   dbAddDoc,
-//   dbCollection,
-//   dbGetDocs,
-//   dbOnSnapshot,
-// } from "fbase";
+import { useEffect, useState } from "react";
 import { dbService } from "fbase";
 import {
   addDoc,
@@ -13,23 +7,22 @@ import {
   onSnapshot,
   orderBy,
 } from "firebase/firestore";
-import { useEffect, useState } from "react";
+import Tweet from "components/Tweet";
 
 const Home = ({ userObj }) => {
   const [tweet, setTweet] = useState("");
   const [tweets, setTweets] = useState([]);
-
   useEffect(() => {
     const q = query(
       collection(dbService, "tweets"),
       orderBy("createAt", "desc")
     );
     onSnapshot(q, (snapshot) => {
-      const tweetArr = snapshot.docs.map((document) => ({
-        id: document.id,
-        ...document.data(),
+      const tweetArr = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
       }));
-      console.log(tweetArr)
+      // console.log(tweetArr);
       setTweets(tweetArr);
     });
   }, []);
@@ -37,15 +30,16 @@ const Home = ({ userObj }) => {
   const onSubmit = async (event) => {
     event.preventDefault();
     try {
-      const docRef = await addDoc(collection(dbService, "tweets"), {
+      const docRef = {
         text: tweet,
         createAt: Date.now(),
         createrId: userObj.uid,
-      });
+      };
+      await addDoc(collection(dbService, "tweets"), docRef);
+      setTweet("");
     } catch (error) {
       console.error("Error adding document: ", error);
     }
-    setTweet("");
   };
   const onChange = ({ target: { value } }) => {
     setTweet(value);
@@ -61,14 +55,16 @@ const Home = ({ userObj }) => {
           maxLength={120}
         />
         <input type="submit" value="Tweet" />
-        <div>
-          {tweets.map((tweet) => (
-            <div key={tweet.id}>
-              <h4>{tweet.text}</h4>
-            </div>
-          ))}
-        </div>
       </form>
+      <div>
+        {tweets.map((tweet) => (
+          <Tweet
+            key={tweet.id}
+            tweetObj={tweet}
+            isOwner={tweet.createrId === userObj.uid}
+          />
+        ))}
+      </div>
     </>
   );
 };

@@ -1,28 +1,30 @@
-// import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
-import AppRouter from "components/Router";
 import { authService } from "fbase";
-import Navigation from "components/Navigation";
+import { onAuthStateChanged } from "firebase/auth";
+import AppRouter from "components/Router";
 
 function App() {
   const [init, setInit] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userObj, setUserObj] = useState(null)
+  const [userObj, setUserObj] = useState(null);
+
   useEffect(() => {
-    authService.onAuthStateChanged((user) => {
+    onAuthStateChanged(authService, (user) => {
       if (user) {
-        setIsLoggedIn(true);
-        setUserObj(user);
-      } else {
-        setIsLoggedIn(false);
-      }
+        setUserObj({
+          displayName: user.displayName,
+          uid: user.uid,
+        });
+      } 
       setInit(true);
     });
   }, []);
   return (
     <>
-      {isLoggedIn && <Navigation />}
-      {init ? <AppRouter userObj={userObj} isLoggedIn={isLoggedIn} /> : "initializing..."}
+      {init ? (
+        <AppRouter userObj={userObj} isLoggedIn={Boolean(userObj)} />
+      ) : (
+        "initializing..."
+      )}
       <footer>&copy; {new Date().getFullYear()} twiter</footer>
     </>
   );
