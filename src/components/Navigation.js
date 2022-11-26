@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router-dom";
 
-const Navigation = () => {
+const Navigation = ({ userObj }) => {
   const navigate = useNavigate();
-  // const onClickNav = (route) => navigate(route); 
+  // const onClickNav = (route) => navigate(route);
   return (
     <nav>
       <ul>
         <li onClick={() => navigate("/")}>Home</li>
-        <li onClick={() => navigate("/profile")}>Profile</li>
+        <li onClick={() => navigate("/profile")}>{userObj.displayName}'s Profile</li>
       </ul>
     </nav>
   );
