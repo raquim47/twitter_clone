@@ -1,0 +1,306 @@
+@import "https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css";
+
+* {
+  box-sizing: border-box;
+}
+
+input {
+  all: unset;
+  box-sizing: border-box;
+  appearance: none;
+}
+
+body {
+  background-color: black;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  color: white;
+}
+
+button {
+  background-color: white;
+  color: black;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+form {
+  width: 100%;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* nav */
+
+.nav {
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+.nav ul {
+  display: flex;
+  justify-content: center;
+}
+
+.nav ul li {
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.nav ul li.user {
+  display: flex;
+  flex-direction: column;
+  margin-right: 0px;
+}
+
+/* Profile Page */
+
+.profileForm {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.9);
+  padding-bottom: 20px;
+}
+
+.updateProfile {
+  margin-top: 10px;
+}
+
+.logOut {
+  margin-top: 20px;
+}
+
+/* twitter Factory */
+
+.factoryForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.factoryInput {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.factoryInput__input {
+  flex-grow: 1;
+  height: 40px;
+  padding: 0px 20px;
+  color: white;
+  border: 1px solid #04aaff;
+  border-radius: 20px;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.factoryInput__arrow {
+  position: absolute;
+  right: 0;
+  background-color: #04aaff;
+  height: 40px;
+  width: 40px;
+  padding: 10px 0px;
+  text-align: center;
+  border-radius: 20px;
+  color: white;
+}
+
+.attachPhoto__label {
+  display: inline-block;
+  color: #04aaff;
+  text-align: center;
+  cursor: pointer;
+}
+
+.attachPhoto__label span {
+  margin-right: 10px;
+  font-size: 12px;
+}
+
+.attachPhoto__input {
+  display: none;
+}
+
+.photo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.photo img {
+  height: 80px;
+  width: 80px;
+  border-radius: 40px;
+  object-fit: cover;
+}
+
+.photo__clear {
+  margin-top: 10px;
+  color: #04aaff;
+  cursor: pointer;
+  text-align: center;
+}
+
+.photo__clear span {
+  margin-right: 10px;
+  font-size: 12px;
+}
+
+/* Nweet */
+
+.tweet {
+  position: relative;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: white;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.tweet h4 {
+  font-size: 14px;
+}
+
+.tweet img {
+  right: calc(100% - 10px);
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+.tweet__actions {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.tweet__actions span {
+  cursor: pointer;
+}
+
+.tweet__actions span:first-child {
+  margin-right: 10px;
+}
+
+.tweetEdit .formBtn {
+  cursor: pointer;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.formInput {
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: 1px solid black;
+  text-align: center;
+  background-color: white;
+  color: black;
+}
+
+.formBtn {
+  cursor: pointer;
+  width: 100%;
+  padding: 7px 20px;
+  text-align: center;
+  color: white;
+  border-radius: 20px;
+  background-color: #04aaff;
+  cursor: pointer;
+}
+
+.cancelBtn {
+  cursor: pointer;
+  background-color: tomato;
+}
+
+/* Auth */
+
+.authContainer {
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.authLogo {
+  margin-bottom: 30px;
+}
+
+.authBtns {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.authBtn {
+  cursor: pointer;
+  border-radius: 20px;
+  border: none;
+  padding: 10px 0px;
+  font-size: 12px;
+  text-align: center;
+  width: 155px;
+  background: white;
+  cursor: pointer;
+}
+
+/* AuthForm */
+
+.authInput {
+  width: 100%;
+  padding: 10px;
+  border-radius: 30px;
+  background-color: rgba(255, 255, 255, 1);
+  margin-bottom: 10px;
+  font-size: 12px;
+  color: black;
+}
+
+.authSwitch {
+  align-self: center;
+  padding: 4px 8px;
+  color: #04aaff;
+  font-size: 12px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.authSubmit {
+  margin-top: 10px;
+  text-align: center;
+  background: #04aaff;
+  color: white;
+  cursor: pointer;
+}
+
+.authError {
+  color: tomato;
+  text-align: center;
+  font-weight: 500;
+  font-size: 12px;
+}
